@@ -18,6 +18,6 @@ class Category < ActiveRecord::Base
   end
 
   def parent_category_name
-    parent_category&.name
+    parent_category.try(:name)
   end
 end
