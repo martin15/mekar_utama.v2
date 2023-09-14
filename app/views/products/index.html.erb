@@ -1,0 +1,69 @@
+<% content_for :javascript_includes do %>
+
+<% end %>
+
+<%
+=begin%>
+ <div id="sub-header-container">
+  <div class="sub-header">
+    <div class="title"><%= @category.name.titleize %> Products</div>
+    <div class="image" style="animation-duration: 2s; animation-name: bounceInLeft;">
+      <%= image_tag "pencil_1.png" %>
+    </div>
+  <div class="clear"></div>
+  </div>
+</div> 
+<%
+=end%>
+
+<section class="main-section product-list">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 header-n-breadcrumb">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h2><%= @category.name.titleize %> Products</h2>
+          </div>
+          <div class="col-12 col-md-6 align-self-center">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+                <li class="breadcrumb-item active" aria-current="page">Products</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center mb-5 mt-5">
+        <%= link_to "All #{@parent_category.name.titleize}", products_path('pencil'), class: "btn btn-outline-dark2 mr-2 #{'active' if 'pencil' == params[:permalink]}" %>
+        <% @child_categories.each do |child| %>
+          <%= link_to child.name, products_path(child.permalink), class: "btn btn-outline-dark2 mr-2 #{'active' if child.permalink == params[:permalink]}" %>
+        <% end %>
+      </div>
+      <div class="products pencil row col-12">
+        <% @products.each do |product| %>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="product">
+              <%= link_to image_tag(product.primary_image('medium'), class: "img-fluid mb-4"),
+                         product_path(name: @category.name, permalink: product.permalink), remote: true %>
+              <div class="cat_name"><%= product.try(:category_name) %> - <%= product.shape %></div>
+              <div class="p_name">
+                <%= link_to product.name, product_path(name: @category.name, permalink: product.permalink),
+                            remote: true %>
+              </div>
+              <hr />
+            </div>
+          </div>
+        <% end %>
+        <div class="col-12 text-center">
+          <div class="paginate">
+            <%= paginate  @products %> 
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="product-detail"></div>

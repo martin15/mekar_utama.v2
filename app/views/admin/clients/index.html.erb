@@ -1,0 +1,51 @@
+<section class="admin-section-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 header-n-breadcrumb">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h2>CLIENT</h2>
+          </div>
+          <div class="col-12 col-md-6 align-self-center">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+                <li class="breadcrumb-item active" aria-current="client">Clients</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 admin-clients">
+        <%= render :partial => "shared/flash" %>
+        <p> <%= link_to "Add new client", new_admin_client_path, class: "btn btn-primary" %></p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @clients.each_with_index do |client, x| %>
+              <tr>
+                <th scope="row"><%= @no+x+1 %></th>
+                <td><%= client.name %></td>
+                <td><%= image_tag client.image.url(:small) %></td>
+                <td>
+                  <%= link_to "Edit", edit_admin_client_path(client.id), :class => "btn btn-success" %>
+                  <%= link_to "Delete", admin_client_path(client.id), :method => :delete,
+                                        data: {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="col-xs-12 pagination justify-content-center"><%= paginate @clients %></div>
+      </div>
+    </div>
+  </div>
+</section>

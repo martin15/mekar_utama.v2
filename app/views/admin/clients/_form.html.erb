@@ -1,0 +1,22 @@
+<%= simple_form_for [:admin, @client], html: {multipart: true}, wrapper: :horizontal_form,
+                    wrapper_mappings: { file: :horizontal_file }  do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name %>
+    <div class="form-group row file optional input-note">
+    <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+    <div class="col-sm-9 input-note"><%= image_tag @client.image.url(:small), class: "img-fluid" %></div>
+  </div>
+  <%= f.input :image, as: :file  %>
+  <div class="form-group row file optional input-note">
+    <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+    <div class="col-sm-9 input-note">please upload image with size 500px x 500px (width x height)</div>
+  </div>
+  <div class="form-group row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= link_to "Cancel", admin_clients_path(:page => params[:page]), 
+                  class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
+

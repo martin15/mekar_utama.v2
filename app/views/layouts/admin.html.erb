@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <% if @meta_description.present? %>
+      <meta name="description" content="<%= @meta_description %>">
+    <% end %>
+    <meta name="author" content="">
+    <title><%= @meta_title ? @meta_title : ApplicationController::BRAND_NAME %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', 'style' %>
+    <%= javascript_include_tag 'application' %>
+    <%= yield :javascript_includes %>
+    <%= yield :css_includes %>
+    <!--[if lt IE 9]>
+      <script src="/assets/html5shiv.js"></script>
+      <script src="/assets/respond.min.js"></script>
+    <![endif]-->
+    <%
+=begin%>
+ <%= favicon_link_tag asset_path('favicon.ico') %> 
+<%
+=end%>
+  </head>
+  <body>
+    <style>
+      @keyframes bounceInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-2000px);
+        }
+        60% {
+            opacity: 1;
+            transform: translateX(30px);
+        }
+        80% {
+            transform: translateX(-10px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+      }
+    </style>
+    <% adjust_header = "" %>
+    <% unless current_user.nil? %>
+      <% adjust_header = "logged" %>
+      <section class="d-none d-sm-block logged-user">
+        <div class="row">
+          <div class="col-12 user-info-bar">
+            <div class="row">
+              <div class="col-md-6 hidden-xs">&nbsp;</div>
+              <div class="col-md-6 hidden-xs" id="login-pan">
+                <%= raw welcome_text %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <!-- navbar -->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-white sticky-top <%= adjust_header %>">
+      <div class="container">
+        <%= link_to root_path, class: "navbar-brand logo" do %>
+          <%= image_tag "Mekar_Utama_logo.png", class: "img-fluid" %>
+        <% end %> 
+        <!-- menu bars -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul id="menu" class="nav links" >
+            <li class="nav-item"><%= link_to "Home", root_path(anchor: "home") %></li>
+            <li class="<%= admin_menu_indicator(['products', 'product_feature_details']) %> nav-item">
+              <%= link_to "Products", admin_products_path %>
+            </li>
+            <li class="<%= admin_menu_indicator(['categories']) %> nav-item">
+              <%= link_to "Categories", admin_categories_path %>
+            </li>
+            <li class="<%= admin_menu_indicator(['banners']) %> nav-item">
+              <%= link_to "Banner", admin_banners_path %>
+            </li>
+            <li class="<%= admin_menu_indicator(['clients']) %> nav-item">
+              <%= link_to "Clients", admin_clients_path %>
+            </li>
+            
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <footer>
+      <div class="footer-bottom-area">
+        <div class="container">
+          <div class="row">
+              <div class="col-12">
+                <div class="copyright">
+                  <p>Copyright © <%= Date.today.year %> 
+                    <span class="custom-green">Mekar Utama</span>. All Rights Reserved.</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

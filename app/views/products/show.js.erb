@@ -1,0 +1,4 @@
+<% unless @product_images.nil? %>
+  $("#product-detail").html("<%= j(raw( render partial: 'product_detail_modal', locals: {product: @product, product_images: @product_images})) %>");
+  $("#product-detail-modal").modal("show")
+<% end %>

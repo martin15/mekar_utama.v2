@@ -1,0 +1,24 @@
+<%= simple_form_for [:admin, @category], wrapper: :horizontal_form, 
+                    wrapper_mappings: { check_boxes: :horizontal_collection } do |f| %>
+  <%= f.error_notification %>
+  <% if params[:action] == "new" %>
+    <%= f.input :parent_id, collection: @parent_categories %>
+  <% else %>
+  <div class="form-group row string optional category_name form-group-valid">
+    <label class="col-sm-3 col-form-label string optional" for="category_name">Name</label>
+    <div class="col-sm-9">
+      <%= @category.parent_category_name %>
+    </div>
+  </div>
+    
+  <% end %>
+  <%= f.input :name %>
+  <%= f.input :page, :as => :hidden, :input_html => { :value => params[:page] || 1 } %>
+  <div class="form-group row mb-0">
+    <div class="col-sm-9 offset-sm-3">
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= link_to "Cancel", admin_categories_path(:page => params[:page]), 
+                  class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>
