@@ -2,10 +2,12 @@
                     wrapper_mappings: { file: :horizontal_file }  do |f| %>
   <%= f.error_notification %>
   <%= f.input :name %>
+  <% unless f.object.new_record?  %>
     <div class="form-group row file optional input-note">
-    <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
-    <div class="col-sm-9 input-note"><%= image_tag @client.image.url(:small), class: "img-fluid" %></div>
-  </div>
+      <label class="col-sm-3 form-control-label file optional">&nbsp;</label>
+      <div class="col-sm-9 input-note"><%= image_tag @client.image.url(:small), class: "img-fluid" %></div>
+    </div>
+  <% end %>
   <%= f.input :image, as: :file  %>
   <div class="form-group row file optional input-note">
     <label class="col-sm-3 form-control-label file optional">&nbsp;</label>

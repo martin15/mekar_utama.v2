@@ -15,7 +15,7 @@
     <% if p.object.new_record? %>
       <%= p.input :image, as: :file, input_html: { multiple: true, 
                   name: "product[product_images_attributes][][image]" }  %>
-    <% else%>
+    <% else %>
       <% if index == 0%>
         <div class="form-group row file optional product_product_images_image" id="manage-image">
           <label class="col-sm-3 form-control-label file optional">Image</label>
