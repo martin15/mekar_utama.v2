@@ -1104,6 +1104,9 @@ section.logged-user .row{
  *----------------------------------------------- */
 #klien-kami{
   background-image: url('/assets/klien-kami.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 500px;
   padding-top: 50px!important;
 }
