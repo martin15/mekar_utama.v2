@@ -6,8 +6,7 @@ class ProductsController < ApplicationController
     if @category.parent_id.nil?
       @parent_category = @category
       @child_categories = @parent_category.child_categories
-      @products = Product.joins("left join categories_products as cp on cp.product_id = products.id").
-                          where("cp.category_id in (?)", @child_categories.map(&:id)).distinct
+      @products = Product.where("category_id in (?)", @child_categories.map(&:id)).distinct
     else
       @parent_category = @category.parent_category
       @child_categories = @parent_category.child_categories
