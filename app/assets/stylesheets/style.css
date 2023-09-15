@@ -1103,7 +1103,7 @@ section.logged-user .row{
  *  KLIEN
  *----------------------------------------------- */
 #klien-kami{
-  background-image: url('/assets/klien-kami.png');
+  /* background-image: url('klien-kami.png'); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
