@@ -1,41 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css?family=Samsung Sans Medium:400,700|Raleway:400,500,600,700|Montserrat:200,400,600,700'); */
 
-@font-face {
-  font-family: 'Samsung Sans Medium';
-  font-style: normal;
-  font-weight: normal;
-  src: local('./fonts/Samsung Sans Medium'), url('./fonts/SamsungSans-Medium.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Samsung Sans Thin';
-  font-style: normal;
-  font-weight: normal;
-  src: local('./fonts/Samsung Sans Thin'), url('./fonts/SamsungSans-Thin.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Samsung Sans Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('./fonts/Samsung Sans Bold'), url('./fonts/SamsungSans-Bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: "Lovelace-Medium";
-  font-style: normal;
-  font-weight: normal;
-  src: local('./fonts/Lovelace-Medium'), 
-       url("./fonts/Lovelace-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Lovelace-Bold";
-  font-style: normal;
-  font-weight: bold;
-  src: local('./fonts/Lovelace-Bold'),
-       url("./fonts/Lovelace-Bold.woff") format("woff")
-}
 
 body {
   font-family: 'Samsung Sans Medium', sans-serif!important;
