@@ -43,8 +43,10 @@
   font-family: "Lovelace-Medium";
   font-style: normal;
   font-weight: normal;
-  src: local('./fonts/Lovelace-Medium'), 
-       url("./fonts/Lovelace-Medium.woff") format("woff");
+  // src: local('./fonts/Lovelace-Medium'),
+  //      url("./fonts/Lovelace-Medium.woff") format("woff");
+  src:font-url('Lovelace-Medium.woff');
+  src:font-url('Lovelace-Medium.woff') format('woff');
 }
 
 @font-face {
