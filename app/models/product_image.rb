@@ -40,7 +40,7 @@ class ProductImage < ActiveRecord::Base
     product = self.product
     return unless product.product_images.primary.first.nil?
     new_pimary_image = product.product_images.first
-    unless new_pimary_image.nil?
+    if !new_pimary_image.nil? && !new_pimary_image.destroyed?
       new_pimary_image.update_attribute :is_primary, true
     end
   end
