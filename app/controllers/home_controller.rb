@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @web_banners = Banner.order("created_at DESC") #Banner.where("b_type = 'web' or b_type = '' or b_type is null ")
-    @mobile_banners = [] #Banner.where("b_type = 'mobile'")
+    @mobile_banners = @web_banners#Banner.where("b_type = 'mobile'")
 
     @contact = ContactUs.new
     @pencil_ids = Category.find_by_permalink('pencil').child_categories.map(&:id)

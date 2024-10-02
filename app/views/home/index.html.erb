@@ -22,7 +22,19 @@
       loop: true,
       margin: 0,
       nav: true,
-      items: 5,
+      responsive:{
+        0:{
+          items: 1,
+          dots: false
+        },
+        768:{
+          items: 3,
+          dots: false
+        },
+        992:{
+          items: 5
+        }
+      },
       navText : ['<span class="fa-stack"><i class="fa fa-circle fa-stack-1x"></i><i class="fa fa-chevron-circle-left fa-stack-1x fa-inverse"></i></span>','<span class="fa-stack"><i class="fa fa-circle fa-stack-1x"></i><i class="fa fa-chevron-circle-right fa-stack-1x fa-inverse"></i></span>']
     })
   });
@@ -42,8 +54,8 @@
   <div class="col-12 no-p-lr banner-mobile owl-carousel owl-theme d-block d-sm-none">
     <% @mobile_banners.each do |banner| %>
       <div class="item">
-        <% alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
-        <%= image_tag banner.image.url, alt: alt  %>
+        <%# alt = banner.alt.blank? ? banner.image.file.filename : banner.alt %>
+        <%= image_tag banner.image.url(), alt: banner.image.url()  %>
       </div>
     <% end %>
   </div>
@@ -167,10 +179,10 @@
 
 <section id="tentang-kami" class="about-us-embro main-section">
   <div class="row justify-content-center no-m-lr">
-    <div class="col-5 no-p-lr">
+    <div class="col-sm-12 col-lg-5 no-p-lr">
       <%= image_tag "about-us-badge.png", class: "img-fluid" %>
     </div>
-    <div class="col-7 about-us-embro-content">
+    <div class="col-sm-12 col-lg-7 about-us-embro-content">
       <h1>Tentang Kami</h1>
       <h2>PRODUK DAN JASA BORDIR</h2>
       <p>Berpengalaman di bidang bordir sejak 1999, dengan
@@ -189,14 +201,17 @@
 
 <section class="about-us-pencil">
   <div class="row justify-content-center no-m-lr">
-    <div class="col-7 no-p-lr about-us-pencil-content">
+    <div class="col-sm-12 col-lg-5 no-p-lr d-block d-sm-none">
+      <%= image_tag "about-us-pencil.png", class: "img-fluid" %>
+    </div>
+    <div class="col-sm-12 col-lg-7 no-p-lr about-us-pencil-content">
       <h2>PENSIL</h2>
       <p> Kami menyediakan produk yang berkualitas dan diakui secara
           internasional. Telah dipercaya oleh berbagai perusahaan dan hotel
           ternama selama bertahun-tahun. Kami percaya diri dapat
           memenuhi kebutuhan anda untuk souvenir, complimentary gift dll.</p>
     </div>
-    <div class="col-5 no-p-lr">
+    <div class="col-sm-12 col-lg-5 no-p-lr d-none d-sm-block">
       <%= image_tag "about-us-pencil.png", class: "img-fluid" %>
     </div>
   </div>
@@ -209,7 +224,7 @@
     <% @clients.each do |client| %>
       <div class="item">
         <%# alt = banner.alt.blank? ? banner.image.url() : banner.alt %>
-        <%= image_tag client.image.url("small"), alt: client.image.url(), style: "width: 125px"  %>
+        <%= image_tag client.image.url("small"), alt: client.image.url(), style: "width: 200px;background-color: #fff"  %>
       </div>
     <% end %>
   </div>
@@ -218,17 +233,19 @@
 
 <section id="hubungi-kami" class="hubungi-kami main-section">
   <div class="row justify-content-center no-m-lr">
-    <div class="col-7 no-p-lr hubungi-kami-content">
+    <div class="col-sm-12 col-lg-5 no-p-lr d-block d-sm-none">
+      <%= image_tag "contact-us.png", class: "img-fluid" %>
+    </div>
+    <div class="col-sm-12 col-lg-7 no-p-lr hubungi-kami-content">
        <h1>Hubungi Kami</h1>
        <p>
-          Kosambi Building, Lantai 1<br />
-          Jl. Jend Sudirman No.999, Bandung 40999<br />
+          Jl. Gandapura No.39a, Bandung 40113<br />
           Jawa Barat, Indonesia
        </p>
-       <p>+622 9999 7777<br />+62 811 1111 222 (Whatsapp Only)</p>
-       <p>info@gmail.com</p>
+       <p>+6222 423 3091<br />+62 8122 437 370 (Whatsapp Only)</p>
+       <p>mekar_utama1@yahoo.com</p>
     </div>
-    <div class="col-5 no-p-lr">
+    <div class="col-sm-12 col-lg-5 no-p-lr d-none d-sm-block">
       <%= image_tag "contact-us.png", class: "img-fluid" %>
     </div>
   </div>

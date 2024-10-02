@@ -540,6 +540,10 @@ section {
 }
 .about-us-embro-content{ padding: 50px 75px 100px!important; }
 .about-us-pencil-content{ padding: 200px 75px!important; }
+@media (max-width: 767px) {
+  .about-us-embro-content{ padding: 50px 25px 75px!important; }
+  .about-us-pencil-content{ padding: 50px 25px 75px!important; }
+}
 .about-us-embro-content h1{ 
   color: #fff;
   font-size: 65px!important;
